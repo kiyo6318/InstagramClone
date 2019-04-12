@@ -1,5 +1,9 @@
 <h1>投稿一覧</h1>
 
+<% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+<% end %>
+
 <% @pictures.each do |picture| %>
   <%= picture.word %>
   <%= image_tag(picture.image.url) %>
