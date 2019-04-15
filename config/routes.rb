@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   patch '/pictures/:id/edit',to:'pictures#update'
   delete '/pictures/:id',to:'pictures#destroy',as:'destroy_picture'
   post '/pictures/confirm',to:'pictures#confirm',as:'confirm_picture'
+
+  get '/users/new',to:'users#new'
+  post '/users',to:'users#create'
+  get '/users/:id',to:'users#show',as:'user'
 end
