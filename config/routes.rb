@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   post '/pictures',to:'pictures#create'
   get '/pictures/:id/edit',to:'pictures#edit',as:'edit_picture'
   patch '/pictures/:id/edit',to:'pictures#update'
-  delete '/pictures/:id/destroy',to:'pictures#destroy'
+  delete '/pictures/:id',to:'pictures#destroy',as:'destroy_picture'
   get '/pictures/confirm/:id',to:'pictures#confirm',as:'confirm_picture'
 end

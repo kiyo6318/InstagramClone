@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_blog,only:[:edit,:update]
+  before_action :set_blog,only:[:edit,:update,:destroy]
 
   def index
     @pictures = Picture.all
@@ -30,6 +30,8 @@ class PicturesController < ApplicationController
   end
 
   def destroy
+    @picture.destroy
+    redirect_to pictures_path,notice:"投稿を削除しました！"
   end
 
   def confirm
