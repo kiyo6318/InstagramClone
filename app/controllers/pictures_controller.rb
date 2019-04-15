@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :set_blog,only:[:edit,:update]
+
   def index
     @pictures = Picture.all
   end
@@ -20,6 +22,11 @@ class PicturesController < ApplicationController
   end
 
   def update
+    if @picture.update(picture_params)
+      redirect_to pictures_path,notice:"編集が完了しました!"
+    else
+      render "edit"
+    end
   end
 
   def destroy
@@ -32,5 +39,9 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:word,:image,:image_cache)
+  end
+
+  def set_blog
+    @picture = Picture.find(params[:id])
   end
 end
