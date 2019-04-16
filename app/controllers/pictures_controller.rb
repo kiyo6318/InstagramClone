@@ -15,6 +15,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     if @picture.save
       redirect_to pictures_path,notice: "投稿しました!"
     else
@@ -40,6 +41,7 @@ class PicturesController < ApplicationController
 
   def confirm
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
     render :new if @picture.invalid?
   end
 
