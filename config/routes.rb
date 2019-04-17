@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/users/:id',to:'users#show',as:'user'
   get '/users/:id/edit',to:'users#edit',as:'edit_user'
   patch '/users/:id',to:'users#update'
+  get 'users/:id/favorites',to:'users#favorites',as:'favorites_picture'
 
   get '/sessions/new',to:'sessions#new'
   post '/sessions/new',to:'sessions#create'

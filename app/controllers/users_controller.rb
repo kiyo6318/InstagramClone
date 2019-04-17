@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:update,:ensure_correct_user_u]
+  before_action :set_user,only:[:show,:edit,:update,:favorites,:ensure_correct_user_u]
   before_action :authenticate_user,only:[:show,:edit,:update]
   before_action :ensure_correct_user_u,only:[:edit,:update]
 
@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def favorites
+    @favorites = @user.favorite_picture
   end
 
   def ensure_correct_user_u
