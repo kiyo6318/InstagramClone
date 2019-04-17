@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :set_blog,only:[:edit,:update,:destroy]
+  before_action :set_blog,only:[:show,:edit,:update,:destroy]
 
   def index
     @pictures = Picture.all
@@ -23,12 +23,16 @@ class PicturesController < ApplicationController
     end
   end
 
+  def show
+    @favorite = current_user.favorites.find_by(picture_id: @picture.id)
+  end
+
   def edit
   end
 
   def update
     if @picture.update(picture_params)
-      redirect_to pictures_path,notice:"編集が完了しました!"
+      redirect_to picture_path,notice:"編集が完了しました!"
     else
       render "edit"
     end
