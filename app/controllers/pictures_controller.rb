@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
-  before_action :set_blog,only:[:show,:edit,:update,:destroy,:ensure_correct_user]
-  before_action :ensure_correct_user,only:[:edit,:update,:destroy]
+  before_action :set_picture,only:[:show,:edit,:update,:destroy,:ensure_correct_user_p]
+  before_action :ensure_correct_user_p,only:[:edit,:update,:destroy]
+  before_action :authenticate_user,only:[:new,:create,:show,:edit,:update,:destroy]
 
   def index
     @pictures = Picture.all
@@ -50,7 +51,7 @@ class PicturesController < ApplicationController
     render :new if @picture.invalid?
   end
 
-  def ensure_correct_user
+  def ensure_correct_user_p
     if @picture.user_id != current_user.id
       redirect_to pictures_path,notice:"権限がありません"
     end
@@ -62,7 +63,7 @@ class PicturesController < ApplicationController
     params.require(:picture).permit(:word,:image,:image_cache)
   end
 
-  def set_blog
+  def set_picture
     @picture = Picture.find(params[:id])
   end
 end

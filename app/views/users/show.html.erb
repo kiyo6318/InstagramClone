@@ -4,4 +4,6 @@
 
 <p>プロフィール画像:<%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
 
-<%= link_to "編集",edit_user_path(@user.id) %>
+<% if @user.id == current_user.id %>
+  <%= link_to "編集",edit_user_path(@user.id) %>
+<% end %>

@@ -2,7 +2,8 @@
 
 <% @pictures.each do |picture| %>
   <%= picture.user.name %>
-  <%= picture.word %>
   <%= image_tag(picture.image.url) %>
-  <%= link_to "詳細",picture_path(picture.id) %>
+  <% if logged_in? %>
+    <%= link_to "詳細",picture_path(picture.id) %>
+  <% end %>
 <% end %>

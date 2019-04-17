@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show,:edit,:update]
-  before_action :authenticate_user,only:[:edit,:update]
+  before_action :set_user,only:[:show,:edit,:update,:ensure_correct_user_u]
+  before_action :authenticate_user,only:[:show,:edit,:update]
+  before_action :ensure_correct_user_u,only:[:edit,:update]
 
   def new
     @user = User.new
@@ -26,6 +27,12 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id),notice:"ユーザープロフィールを編集しました！"
     else
       render "edit"
+    end
+  end
+
+  def ensure_correct_user_u
+    if @user.id != current_user.id
+      redirect_to pictures_path,notice:"権限がありません"
     end
   end
 

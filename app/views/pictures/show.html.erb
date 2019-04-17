@@ -3,7 +3,7 @@
 <%= @picture.word %>
 <%= image_tag(@picture.image.url) %>
 
-<% if @picture.user_id == @current_user.id %>
+<% if @picture.user_id == current_user.id %>
     <%= link_to "編集",edit_picture_path(@picture.id) %>
     <%= link_to "削除",destroy_picture_path(@picture.id),method: :delete,data:{confirm:"本当に削除しますか？"} %>
 <% end %>
