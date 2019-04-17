@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
-  before_action :set_blog,only:[:show,:edit,:update,:destroy]
+  before_action :set_blog,only:[:show,:edit,:update,:destroy,:ensure_correct_user]
+  before_action :ensure_correct_user,only:[:edit,:update,:destroy]
 
   def index
     @pictures = Picture.all
@@ -47,6 +48,12 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
     render :new if @picture.invalid?
+  end
+
+  def ensure_correct_user
+    if @picture.user_id != current_user.id
+      redirect_to pictures_path,notice:"権限がありません"
+    end
   end
 
   private
