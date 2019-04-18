@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   delete '/session/:id',to:'sessions#destroy',as:'destroy_session'
 
   resources :favorites,only:[:create,:destroy]
+
+  mount LetterOpenerWeb::Engine, at: "/inbox" if Rails.env.development?
 end
