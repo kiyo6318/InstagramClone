@@ -30,6 +30,11 @@ a {
   src: local('Billabong'), url('Billabong.woff') format('woff');
 }
 
+.navbar-brand{
+  font-family: 'Billabong';
+  font-size: 35px;
+}
+
 .navbar-default{
   background-color: #eee;
 }
