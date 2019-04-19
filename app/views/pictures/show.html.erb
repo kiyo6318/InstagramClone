@@ -1,7 +1,7 @@
 <h1>投稿詳細</h1>
 
 <div><%= link_to @picture.user.name,user_path(@picture.user.id) %></div>
-<div><%= @picture.word %></div>
+<div class="word"><%= @picture.word %></div>
 <div><%= image_tag(@picture.image.url) %></div>
 
 <% if @picture.user_id == current_user.id %>

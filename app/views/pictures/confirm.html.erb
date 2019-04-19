@@ -3,14 +3,14 @@
   <%= form.hidden_field :word %>
   <%= form.hidden_field :image %>
 
-  <p><%= @picture.word %></p>
+  <p class="word"><%= @picture.word %></p>
   <p><%= image_tag(@picture.image.url) if @picture.image && @picture.image.url%></p>
   <%= form.hidden_field :image_cache %>
-  <p><%= form.submit "投稿する" %></p>
+  <p class="actions"><%= form.submit "投稿する" %></p>
 <% end %>
 
 <%= form_with(model: @picture,url:pictures_new_path,local:true,method:"get") do |form| %>
   <%= form.hidden_field :word %>
   <%= form.hidden_field :image_cache %>
-  <%= form.submit "戻る", name:"back" %>
+  <p class="actions"><%= form.submit "戻る", name:"back" %></p>
 <% end %>
