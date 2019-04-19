@@ -1,10 +1,11 @@
 <h1>投稿詳細</h1>
 
-<%= @picture.word %>
-<%= image_tag(@picture.image.url) %>
+<div><%= link_to @picture.user.name,user_path(@picture.user.id) %></div>
+<div><%= @picture.word %></div>
+<div><%= image_tag(@picture.image.url) %></div>
 
 <% if @picture.user_id == current_user.id %>
-    <%= link_to "編集",edit_picture_path(@picture.id) %>
+    <span class="mgr-10"><%= link_to "編集",edit_picture_path(@picture.id) %></span>
     <%= link_to "削除",destroy_picture_path(@picture.id),method: :delete,data:{confirm:"本当に削除しますか？"} %>
 <% end %>
 

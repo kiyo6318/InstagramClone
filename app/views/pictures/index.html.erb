@@ -1,9 +1,13 @@
 <h1>投稿一覧</h1>
 
 <% @pictures.each do |picture| %>
-  <%= picture.user.name %>
-  <%= image_tag(picture.image.url) %>
+  <div><%= link_to picture.user.name,user_path(picture.user.id) %></div>
+  <div>
   <% if logged_in? %>
-    <%= link_to "詳細",picture_path(picture.id) %>
+    <%= link_to image_tag(picture.image.url),picture_path(picture.id) %>
+  <% else %>
+    <%= image_tag(picture.image.url) %>
   <% end %>
+  </div>
+  <br>
 <% end %>

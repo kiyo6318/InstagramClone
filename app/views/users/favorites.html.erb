@@ -1,5 +1,6 @@
 <h1>お気に入り一覧</h1>
 <% @favorites.each do |favorite| %>
-  <%= favorite.word %>
-  <%= image_tag(favorite.image.url) %>
+  <p><%= favorite.user.name %></p>
+  <p><%= link_to favorite.word,picture_path(favorite.id) %></p>
+  <p><%= link_to image_tag(favorite.image.url),picture_path(favorite.id) %></p>
 <% end %>

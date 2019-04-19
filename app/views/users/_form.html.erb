@@ -11,21 +11,28 @@
     </div>
   <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.file_field :image %>
-  <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
-  <%= f.hidden_field :image_cache %>
-
-  <%= f.submit "入力完了" %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+    <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+    <%= f.hidden_field :image_cache %>
+  </p>
+  <p>
+    <%= f.submit "入力完了" %>
+  </p>
 <% end %>

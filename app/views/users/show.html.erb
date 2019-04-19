@@ -2,10 +2,9 @@
 
 <p>メールアドレス:<%= @user.email %></p>
 
-<p>プロフィール画像:<%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
+<p><%= image_tag(@user.image.url) if @user.image && @user.image.url %></p>
 
 <% if @user.id == current_user.id %>
-  <%= link_to "編集",edit_user_path(@user.id) %>
+  <span class="mgr-10"><%= link_to "編集",edit_user_path(@user.id) %></span>
 <% end %>
-
 <%= link_to "お気に入り投稿一覧",favorites_picture_path %>
