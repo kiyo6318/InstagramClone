@@ -19,6 +19,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(picture_params)
     @picture.user_id = current_user.id
     if @picture.save
+      PictureMailer.picture_mail(@picture).deliver
       redirect_to pictures_path,notice: "投稿しました!"
     else
       render 'new'
